@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-secret-pod
+  labels:
+    name: mysql-pod
+spec:
+  containers:
+    - name: mysql-pod
+      image: mysql
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql-secret
+      ports:
+        - containerPort: 4005
+          name: mysql-port
