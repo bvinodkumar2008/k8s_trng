@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: java-app
+  name: java-app-rs
   labels:
-    app: java-sample-app
+    app: java-app-rs
 spec:
   replicas: 3
   selector:
@@ -17,4 +17,6 @@ spec:
       containers:
         - name: java-app
           image: bvinodkumar2008/java-docker:latest
-          
+          ports:
+            - name: java-app-port
+              containerPort: 8080
