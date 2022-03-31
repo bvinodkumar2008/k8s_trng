@@ -1,0 +1,10 @@
+Commands used:
+
+1. Running the redis image:
+   kubectl run redis-pod --image=redis -o yaml --dry-run=client >  imp-redis-pod.yml
+   
+2. Exposing redis pod:
+   kubectl expose pod redis-pod --port=6379 --protocol=TCP --name=redis-svc --type=NodePort -o yaml --dry-run-client > redis-pod-svc.yml
+
+3. Create deployment:
+   kubectl create deployment redis-dep --image=redis --replicas=1 -o yaml --dry-run-client > redis-dep.yml
